@@ -3,11 +3,41 @@
 //       const root=ReactDOM.createRoot(document.getElementById("root"));
 //       root.render(heading);
 
-const parent =React.createElement("div",{id:"parent"},
-[React.createElement("div",{id:"child"},[React.createElement("h1",{id:"child1"},"child1"),React.createElement("h2",{id:"child2"},"child2")]),
-React.createElement("div",{id:"child"},[React.createElement("h1",{id:"child1"},"child1"),React.createElement("h2",{id:"child2"},"child2")])]
-) 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-root.render(parent);
-console.log(parent);
+//jsx=> transpiled into react.createElement =>reactElement object =>htmlelemtent (render)
+
+//react Element
+const jsxheading = (
+  <h1 id="heading" className="head" tabIndex="5">
+    abinaya govindarajan
+  </h1>
+);
+
+// functional component
+const HeadingComponent = () => {
+  return <h1>hai this is functional component</h1>;
+};
+
+// this is also functional component
+const HeadingComponent2 = () => <h1>this is also the functional component</h1>;
+
+
+//component composition means component into another component
+
+const Title=()=>{
+ return (<div className="heading">
+    <h1>React episode3</h1>
+  </div>)
+};
+const HeaderComponent=()=>{
+ return <div className="main-container">
+    <Title/>
+    <h2> powered by Abinaya</h2>
+  </div>
+};
+
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<HeaderComponent/>);
